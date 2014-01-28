@@ -5,18 +5,24 @@ namespace DependencyKata
 {
     public class DoItAll
     {
+        public DoItAll(IConsoleAdapter console)
+        {
+            _console = console;
+        }
+
         private readonly UserDetails _userDetails = new UserDetails();
+        private IConsoleAdapter _console;
 
         public void Do()
         {
             Console.WriteLine("Enter a username");
-            _userDetails.Username = Console.ReadLine();
+            _userDetails.Username = _console.GetInput();
             Console.WriteLine("Enter your full name");
-            var fullName = Console.ReadLine();
+            var fullName = _console.GetInput();
             Console.WriteLine("Enter your password");
-            _userDetails.Password = Console.ReadLine();
+            _userDetails.Password = _console.GetInput();
             Console.WriteLine("Re-enter your password");
-            var confirmPassword = Console.ReadLine();
+            var confirmPassword = _console.GetInput();
 
             if (_userDetails.Password != confirmPassword)
             {
