@@ -9,9 +9,21 @@ namespace DependencyKata.Tests
         [Test, Category("Integration")]
         public void DoItAll_Does_ItAll()
         {
-            var console = Substitute.For<IConsoleAdapter>();
+            var expected = "The passwords don't match";
+            var console = Substitute.For<IOutputInputAdapter>();
             var doItAll = new DoItAll(console);
-            doItAll.Do();
+            var result = doItAll.Do();
+            Assert.AreEqual(expected, result);
+        }
+        [Test, Category("Integration")]
+        public void DoItAll_Does_ItAll_MatchingPasswords()
+        {
+            var expected = "Database.SaveToLog Exception:";
+            var console = Substitute.For<IOutputInputAdapter>();
+            console.GetInput().Returns("something");
+            var doItAll = new DoItAll(console);
+            var result = doItAll.Do();
+            StringAssert.Contains(expected, result);
         }
     }
 }
