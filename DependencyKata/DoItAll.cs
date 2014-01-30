@@ -1,17 +1,18 @@
 ﻿using System;
-using System.IO;
 
 namespace DependencyKata
 {
     public class DoItAll
     {
-        public DoItAll(IOutputInputAdapter ioAdapter)
+        public DoItAll(IOutputInputAdapter ioAdapter, ILogging logging)
         {
             _ioAdapter = ioAdapter;
+            _logging = logging;
         }
 
         private readonly UserDetails _userDetails = new UserDetails();
         private IOutputInputAdapter _ioAdapter;
+        private readonly ILogging _logging;
 
         public string Do()
         {
@@ -38,19 +39,7 @@ namespace DependencyKata
 
             _ioAdapter.SetOutput(message);
 
-            try
-            {
-                Database.SaveToLog(message);
-            }
-            catch (Exception ex)
-            {
-                // If database write fails, write to file
-                using (var writer = new StreamWriter("log.txt", true))
-                {
-                    message = message + "\nDatabase.SaveToLog Exception: " + ex.Message;
-                    writer.WriteLine(message);
-                }
-            }
+            message = _logging.LogMessage(message);
             return message;
         }
     }

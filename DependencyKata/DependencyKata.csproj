@@ -42,6 +42,7 @@
     <Compile Include="ConsoleAdapter.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DoItAll.cs" />
+    <Compile Include="Logging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDetails.cs" />
   </ItemGroup>
