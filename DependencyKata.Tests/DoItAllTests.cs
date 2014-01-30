@@ -27,7 +27,7 @@ namespace DependencyKata.Tests
             var result = doItAll.Do();
             StringAssert.Contains(expected, result);
         }
-        [Test, Category("Integration")]
+        [Test]
         public void DoItAll_Does_ItAll_MockLogging()
         {
             var expected = string.Empty;
