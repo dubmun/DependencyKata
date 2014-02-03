@@ -1,4 +1,4 @@
-#Dependency Kata in C#
+#Dependency Kata in CSharp#
 
 ##Overview
 
