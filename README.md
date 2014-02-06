@@ -2,7 +2,9 @@
 
 ##Overview
 
-This kata takes the developer through the process of refactoring C# code with a high level of different dependencies for better testability.
+This kata takes the developer through the process of refactoring C# code with a high level of different dependencies for better testability. 
+
+The initial seed for this kata came from a blog post by Richard Dalton here: http://www.devjoy.com/2013/01/legacy-code-katas/
 
 ##Prerequisites
 
